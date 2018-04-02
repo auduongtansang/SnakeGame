@@ -38,7 +38,7 @@ void Game(void)
 
 		ChangeSnakeCroodinates(snake);
 
-		Sleep(speed);
+		//Sleep(speed);
 	}
 }
 
