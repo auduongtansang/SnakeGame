@@ -50,10 +50,7 @@ void Game(void)
 			{
 				k = _getch();
 			}
-			if ((k == 'w' || k == 'W') && speed > 0)
-				speed -= 5;
-			if (k == 'q' || k == 'Q')
-				speed += 5;
+			
 			ChangeSnakeDirection(snake, k);
 		}
 
