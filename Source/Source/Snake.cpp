@@ -45,7 +45,7 @@ void ChangeSnakeDirection(Snake &snake, int k)
 	}
 }
 
-void ChangeSnakeCroodinates(Snake &snake)
+void ChangeSnakeCoodinates(Snake &snake)
 {
 	for (int i = snake.length - 1; i > 0; i--)
 	{
@@ -94,10 +94,39 @@ int SnakeCrash(Snake snake)
 
 	if (crash)
 	{
-		Goto(3 * consoleWidth / 4 - strlen("Game over. Press enter to continue...") / 2, consoleHeigth / 2);
+		Goto(3 * consoleWidth / 4 - (int)strlen("Game over. Press enter to continue...") / 2, consoleHeigth / 2);
 		printf("Game over. Press enter to continue...");
 		while (_getch() != 13);
 	}
 
 	return crash;
+}
+
+void SnakeExpand(Snake &snake)
+{
+	COORD *newnode = new COORD[++snake.length];
+
+	for (int i = snake.length - 1; i > 0; i--)
+	{
+		newnode[i] = snake.node[i - 1];
+	}
+	newnode[0] = newnode[1];
+
+	if (snake.status == UP)
+	{
+		newnode[0].Y--;
+	}
+	else if (snake.status == DOWN)
+	{
+		newnode[0].Y++;
+	}
+	else if (snake.status == LEFT)
+	{
+		newnode[0].X--;
+	}
+	else if (snake.status == RIGHT)
+	{
+		newnode[0].X++;
+	}
+	snake.node = newnode;
 }

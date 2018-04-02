@@ -15,7 +15,8 @@ struct Snake
 void SnakeInitialize(Snake &snake);
 void DrawSnakeOnBuffer(Snake snake, Buffer &buffer);
 void ChangeSnakeDirection(Snake &snake, int k);
-void ChangeSnakeCroodinates(Snake &snake);
+void ChangeSnakeCoodinates(Snake &snake);
 int SnakeCrash(Snake snake);
+void SnakeExpand(Snake &snake);
 
 #endif 

@@ -2,11 +2,12 @@
 #include <conio.h>
 #include "Console.h"
 #include "Snake.h"
+#include "Food.h"
 
 using namespace std;
 
 Snake snake;
-COORD food;
+Food food;
 
 Buffer buffer;
 
@@ -14,17 +15,33 @@ void Initialize(void)
 {
 	SnakeInitialize(snake);
 	VirtualBufferInitialize(buffer);
+	DrawSnakeOnBuffer(snake, buffer); //To genrate first food
+	FoodGenerate(food, buffer);
 	ChangeConsoleCursorStatus(100, FALSE);
 }
 
 void Game(void)
 {
-	int speed = 25;
+	int speed = 75;
+	bool ate = 0;
 
 	while (1)
 	{
 		DrawSnakeOnBuffer(snake, buffer);
+
+		if (snake.node[0].X == food.X && snake.node[0].Y == food.Y)
+		{
+			ate = 1;
+			if (FoodGenerate(food, buffer) == 0)
+			{
+				break;
+			}
+		}
+		DrawFoodOnBuffer(food, buffer);
+
 		PrintVirtualBuffer(buffer);
+
+		Sleep(speed);
 
 		if (_kbhit()) //If there is a key pressed
 		{
@@ -33,16 +50,27 @@ void Game(void)
 			{
 				k = _getch();
 			}
+			if ((k == 'w' || k == 'W') && speed > 0)
+				speed -= 5;
+			if (k == 'q' || k == 'Q')
+				speed += 5;
 			ChangeSnakeDirection(snake, k);
 		}
 
-		ChangeSnakeCroodinates(snake);
+		if (ate)
+		{
+			SnakeExpand(snake);
+			ate = 0;
+		}
+		else
+		{
+			ChangeSnakeCoodinates(snake);
+		}
+
 		if (SnakeCrash(snake))
 		{
 			break;
 		}
-
-		Sleep(speed);
 	}
 }
 
