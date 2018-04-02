@@ -4,9 +4,6 @@ CONSOLE_SCREEN_BUFFER_INFO csbi;
 HANDLE curConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 BOOL getbufferinfor = GetConsoleScreenBufferInfo(curConsole, &csbi);
 
-#define consoleWidth (csbi.srWindow.Right + 1)
-#define consoleHeigth (csbi.srWindow.Bottom + 1)
-
 void Goto(int row, int column)
 {
 	COORD coord;

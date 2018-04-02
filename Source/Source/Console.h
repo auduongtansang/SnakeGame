@@ -6,6 +6,9 @@
 
 using namespace std;
 
+#define consoleWidth (csbi.srWindow.Right + 1)
+#define consoleHeigth (csbi.srWindow.Bottom + 1)
+
 #define KEY_UP 72
 #define KEY_DOWN 80
 #define KEY_LEFT 75

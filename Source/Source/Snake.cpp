@@ -1,4 +1,5 @@
 #include "Snake.h"
+#include <conio.h>
 
 void SnakeInitialize(Snake &snake)
 {
@@ -67,4 +68,36 @@ void ChangeSnakeCroodinates(Snake &snake)
 	{
 		snake.node[0].X++;
 	}
+}
+
+int SnakeCrash(Snake snake)
+{
+	int crash = 0;
+
+	for (int i = 1; i < snake.length; i++)
+	{
+		if (snake.node[0].X == snake.node[i].X && snake.node[0].Y == snake.node[i].Y)
+		{
+			crash = 1;
+		}
+	}
+
+	CONSOLE_SCREEN_BUFFER_INFO csbi;
+	HANDLE curConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	BOOL getbufferinfor = GetConsoleScreenBufferInfo(curConsole, &csbi);
+
+	if (snake.node[0].X <= 0 || snake.node[0].X >= consoleWidth / 2 - 1 ||
+		snake.node[0].Y <= 0 || snake.node[0].Y >= consoleHeigth - 1)
+	{
+		crash = 1;
+	}
+
+	if (crash)
+	{
+		Goto(3 * consoleWidth / 4 - strlen("Game over. Press enter to continue...") / 2, consoleHeigth / 2);
+		printf("Game over. Press enter to continue...");
+		while (_getch() != 13);
+	}
+
+	return crash;
 }

@@ -1,2 +1,6 @@
 ﻿  Console.cpp
+  Snake.cpp
+e:\github\snakegame\source\source\snake.cpp(97): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  Source.cpp
+  Generating Code...
   Source.vcxproj -> E:\GitHub\SnakeGame\Source\x64\Debug\Source.exe

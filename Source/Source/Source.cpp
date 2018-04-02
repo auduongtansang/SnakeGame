@@ -19,7 +19,7 @@ void Initialize(void)
 
 void Game(void)
 {
-	int speed = 50;
+	int speed = 25;
 
 	while (1)
 	{
@@ -37,8 +37,12 @@ void Game(void)
 		}
 
 		ChangeSnakeCroodinates(snake);
+		if (SnakeCrash(snake))
+		{
+			break;
+		}
 
-		//Sleep(speed);
+		Sleep(speed);
 	}
 }
 
@@ -46,5 +50,6 @@ int main(void)
 {
 	Initialize();
 	Game();
+	delete[] snake.node;
 	return 0;
 }

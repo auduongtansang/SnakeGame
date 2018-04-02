@@ -16,5 +16,6 @@ void SnakeInitialize(Snake &snake);
 void DrawSnakeOnBuffer(Snake snake, Buffer &buffer);
 void ChangeSnakeDirection(Snake &snake, int k);
 void ChangeSnakeCroodinates(Snake &snake);
+int SnakeCrash(Snake snake);
 
 #endif 
