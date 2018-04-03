@@ -25,7 +25,7 @@ void Initialize(void)
 
 void Game(void)
 {
-	int speed = 75;
+	int speed = -200;
 	bool ate = 0;
 
 	while (1)
@@ -44,7 +44,7 @@ void Game(void)
 
 		PrintVirtualBuffer(buffer);
 
-		Sleep(speed);
+		Sleep(-speed);
 
 		if (_kbhit())
 		{
@@ -61,6 +61,9 @@ void Game(void)
 		{
 			SnakeExpand(snake);
 			ate = 0;
+			speed += 5;
+			if (speed > 0) 
+				speed = 0;
 		}
 		else
 		{
