@@ -96,7 +96,7 @@ int SnakeCrash(Snake snake)
 	{
 		Goto(3 * consoleWidth / 4 - (int)strlen("Game over. Press enter to continue...") / 2, consoleHeigth / 2);
 		printf("Game over. Press enter to continue...");
-		while (_getch() != 13);
+		while (_getch() != KEY_ENTER);
 	}
 
 	return crash;

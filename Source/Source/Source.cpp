@@ -14,9 +14,12 @@ Buffer buffer;
 void Initialize(void)
 {
 	SnakeInitialize(snake);
+
 	VirtualBufferInitialize(buffer);
+
 	DrawSnakeOnBuffer(snake, buffer); //To genrate first food
 	FoodGenerate(food, buffer);
+
 	ChangeConsoleCursorStatus(100, FALSE);
 }
 
@@ -32,7 +35,7 @@ void Game(void)
 		if (snake.node[0].X == food.X && snake.node[0].Y == food.Y)
 		{
 			ate = 1;
-			if (FoodGenerate(food, buffer) == 0)
+			if (FoodGenerate(food, buffer) == false)
 			{
 				break;
 			}
@@ -43,7 +46,7 @@ void Game(void)
 
 		Sleep(speed);
 
-		if (_kbhit()) //If there is a key pressed
+		if (_kbhit())
 		{
 			int k = _getch();
 			if (k == 224) //Arrow key

@@ -34,9 +34,9 @@ bool FoodGenerate(Food &food, Buffer buffer)
 	}
 	else
 	{
-		Goto(3 * consoleWidth / 4 - (int)strlen("Game over. Press enter to continue...") / 2, consoleHeigth / 2);
-		printf("Game over. Press enter to continue...");
-		while (_getch() != 13);
+		Goto(3 * consoleWidth / 4 - (int)strlen("End game. Press enter to continue...") / 2, consoleHeigth / 2);
+		printf("End game. Press enter to continue...");
+		while (_getch() != KEY_ENTER);
 	}
 	return nBlank;
 }
