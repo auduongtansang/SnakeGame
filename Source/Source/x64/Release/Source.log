@@ -1,6 +1,1 @@
-﻿  Generating code
-  2 of 173 functions ( 1.2%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
-  Finished generating code
-  Source.vcxproj -> E:\GitHub\SnakeGame\Source\x64\Release\Source.exe
+﻿  Source.cpp

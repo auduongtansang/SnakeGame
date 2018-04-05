@@ -27,7 +27,6 @@ bool FoodGenerate(Food &food, Buffer buffer)
 			}
 		}
 	}
-	srand((unsigned int)time(NULL));
 	if (nBlank)
 	{
 		food = BufferBlank[rand() % nBlank];

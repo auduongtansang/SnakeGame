@@ -1,5 +1,6 @@
 #include <iostream>
 #include <conio.h>
+#include <time.h>
 #include "Console.h"
 #include "Snake.h"
 #include "Food.h"
@@ -18,6 +19,7 @@ void Initialize(void)
 	VirtualBufferInitialize(buffer);
 
 	DrawSnakeOnBuffer(snake, buffer); //To genrate first food
+	srand((unsigned int)time(NULL));
 	FoodGenerate(food, buffer);
 
 	ChangeConsoleCursorStatus(100, FALSE);
@@ -61,7 +63,7 @@ void Game(void)
 		{
 			SnakeExpand(snake);
 			ate = 0;
-			speed += 5;
+			speed += 1;
 			if (speed > 0) 
 				speed = 0;
 		}
