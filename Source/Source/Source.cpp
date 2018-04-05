@@ -27,7 +27,7 @@ void Initialize(void)
 
 void Game(void)
 {
-	int speed = -200;
+	int speed = -250;
 	bool ate = 0;
 
 	while (1)
